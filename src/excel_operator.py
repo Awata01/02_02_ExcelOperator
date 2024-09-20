@@ -2,8 +2,6 @@ import os
 from typing import List
 import openpyxl
 import csv
-from openpyxl.styles import Font
-from openpyxl.utils import get_column_letter
 import win32com.client
 import re
 class ExcelOperator:
@@ -115,7 +113,6 @@ class ExcelOperator:
         # 変更を保存
         wb.save(excel_file_path)
 
-    # 6. 指定ブックから文字列検索
     @staticmethod
     def search_string_in_book(
             excel_file_path: str,
@@ -132,7 +129,6 @@ class ExcelOperator:
         :param use_regex: Trueの場合、正規表現を使用して検索する。Falseの場合、文字列検索を行う。
         :return: 検索結果のリスト。各要素はタプル (シート名, 'A1' などのセルの位置, セルの値) 形式。
         """
-
         # 指定されたファイル名からフルパスを作成
 
         # Excelアプリケーションを起動
@@ -197,7 +193,6 @@ class ExcelOperator:
         # 検索結果のリストを返す
         return results
 
-    # 7. 指定ブックから任意の文字列を置換
     @staticmethod
     def replace_string_in_book(
             excel_file_path: str,
@@ -216,7 +211,6 @@ class ExcelOperator:
         :param use_regex: Trueの場合、正規表現を使用して置換する。Falseの場合、文字列置換を行う。
         :return: 置換結果のリスト。各要素はタプル (シート名, 'A1' などのセルの位置, 置換前の値, 置換後の値) 形式。
         """
-
         # 指定されたファイル名からフルパスを作成
         print(f"Opening file: {excel_file_path}")  # デバッグ用: ファイルパスを表示
 
@@ -296,7 +290,6 @@ class ExcelOperator:
         # 置換結果のリストを返す
         return results
 
-    # 8. 指定ブックの指定シートのセルサイズを方眼紙サイズに設定
     @staticmethod
     def set_grid_size(excel_file_path: str, sheet_name: str, pixel_size: int) -> None:
         """
